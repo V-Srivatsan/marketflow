@@ -68,11 +68,11 @@ def transact(
     user: user_models.User = Depends(middleware.get_user)
 ):
     if not user.verified:
-        raise HTTPException(status.HTTP_403_FORBIDDEN, detail="Account not verified")
+        raise HTTPException(status.HTTP_403_FORBIDDEN, detail={"message": "Account not verified"})
     
     stock = session.exec(sql.select(models.Stock).where(models.Stock.uid == uuid.UUID(stock_id))).one_or_none()
     if stock is None:
-        raise HTTPException(status.HTTP_404_NOT_FOUND, detail="Stock ID not found")
+        raise HTTPException(status.HTTP_404_NOT_FOUND, detail={"message": "Stock ID not found"})
     
     holding = session.exec(
         sql.select(user_models.Holding)
@@ -81,7 +81,7 @@ def transact(
 
     
     if data.units == 0:
-        raise HTTPException(status.HTTP_400_BAD_REQUEST, detail="Units cannot be zero")
+        raise HTTPException(status.HTTP_400_BAD_REQUEST, detail={"message": "Units cannot be zero"})
     
     res: dict[str, bool | str] = {}
     if data.units < 0: res = logic.sell_stock(user, stock, abs(data.units), session, holding)
@@ -100,22 +100,20 @@ def start_stock(_: None = Depends(middleware.check_admin)):
     
     PROVIDER = StockProvider(2, 10, POOL)
     PROVIDER.start()
-    return "Stock provider initialized"
+    return {"message": "Stock provider initialized"}
 
 
 @router.delete('/')
 def stop_stock(_: None = Depends(middleware.check_admin)):
-    if not PROVIDER.started.is_set(): return HTTPException(status.HTTP_428_PRECONDITION_REQUIRED, detail="Stock provider is not running!")
+    if not PROVIDER.started.is_set(): return HTTPException(status.HTTP_428_PRECONDITION_REQUIRED, detail={"message": "Stock provider is not running!"})
 
     PROVIDER.started.clear()
     PROVIDER.join()
-    return "Stock provider stopped"
-
+    return {"message": "Stock provider stopped"}
 
 @router.post('/events')
 def trigger_event(data: forms.StockEventForm, _: None = Depends(middleware.check_admin)):
-    if not PROVIDER.started.is_set(): raise HTTPException(status.HTTP_428_PRECONDITION_REQUIRED, detail="Stock provider is not running!")
-
+    if not PROVIDER.started.is_set(): raise HTTPException(status.HTTP_428_PRECONDITION_REQUIRED, detail={"message": "Stock provider is not running!"})
     for event in data.events:
         PROVIDER.add_pattern(event['id'], [
             Event(
@@ -128,11 +126,11 @@ def trigger_event(data: forms.StockEventForm, _: None = Depends(middleware.check
             )
         ])
 
-    return "Events added successfully!"
+    return {"message": "Events added successfully!"}
 
 @router.post('/patterns')
 def trigger_pattern(data: forms.StockEventForm, _: None = Depends(middleware.check_admin)):
-    if not PROVIDER.started.is_set(): raise HTTPException(status.HTTP_428_PRECONDITION_REQUIRED, detail="Stock provider is not running!")
+    if not PROVIDER.started.is_set(): raise HTTPException(status.HTTP_428_PRECONDITION_REQUIRED, detail={"message": "Stock provider is not running!"})
 
     functions = {
         'bullish_flag': patterns.BULLISH_FLAG,
@@ -160,9 +158,10 @@ def trigger_pattern(data: forms.StockEventForm, _: None = Depends(middleware.che
             cache.get(event['id'])
         ).close
 
+        if event['pattern'] not in functions: continue
         PROVIDER.add_pattern(
             event['id'], 
             functions[event['pattern']](value)
         )
 
-    return "Patterns added successfully!"
+    return {"message": "Patterns added successfully!"}

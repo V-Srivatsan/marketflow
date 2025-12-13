@@ -16,9 +16,9 @@ def login(data: forms.LoginForm, session: sql.Session = Depends(get_session)):
         res = session.exec(sql.select(models.User).where(models.User.username == data.username))
         user = res.one()
     except:
-        raise HTTPException(status.HTTP_400_BAD_REQUEST, detail="Username not found!")
+        raise HTTPException(status.HTTP_400_BAD_REQUEST, detail={"message": "Username not found!"})
     
-    if not user.verify(data.password): raise HTTPException(status.HTTP_401_UNAUTHORIZED, detail="Incorrect password")
+    if not user.verify(data.password): raise HTTPException(status.HTTP_401_UNAUTHORIZED, detail={"message": "Incorrect password"})
     return { "token": jwt.encode({ "uid": user.uid.hex }, os.environ['SECRET'], algorithm='HS256') }
 
 
@@ -26,7 +26,7 @@ def login(data: forms.LoginForm, session: sql.Session = Depends(get_session)):
 def signup(data: forms.LoginForm, session: sql.Session = Depends(get_session)):
     res = session.exec(sql.select(models.User).where(models.User.username == data.username))
     user = res.one_or_none()
-    if user != None: raise HTTPException(status.HTTP_400_BAD_REQUEST, detail="Username already taken!")
+    if user != None: raise HTTPException(status.HTTP_400_BAD_REQUEST, detail={"message": "Username already taken!"})
     
     user = models.User(username=data.username, password=data.password)
     user.save(session)
@@ -37,7 +37,7 @@ def signup(data: forms.LoginForm, session: sql.Session = Depends(get_session)):
 def verify_user(username: str, _: None = Depends(middleware.check_admin), session: sql.Session = Depends(get_session)):
     res = session.exec(sql.select(models.User).where(models.User.username == username))
     user = res.one_or_none()
-    if user == None: raise HTTPException(status.HTTP_404_NOT_FOUND, detail="User not found!")
+    if user == None: raise HTTPException(status.HTTP_404_NOT_FOUND, detail={"message": "User not found!"})
     
     user.verified = True
     user.save(session)
