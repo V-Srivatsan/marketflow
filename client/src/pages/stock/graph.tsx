@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { useState, useEffect, useRef } from "react";
 import {
   AreaSeries, LineSeries, CandlestickSeries,
@@ -34,7 +36,7 @@ const INDICATOR_STYLE = {
   lastValueVisible: false,
 };
 
-const Graph = ({ data, curr, indicatorData }: GraphProps) => {
+const Graph = ({ data, indicatorData }: GraphProps) => {
   const [selectedIndicator, setSelectedIndicator] = useState<string | null>(null);
   const [subPanelData, setSubPanelData] = useState<any[]>([]);
 

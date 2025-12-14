@@ -4,7 +4,7 @@ import { makeRequest, SERVER_HOST, showMessage } from './lib/utils'
 import { NavLink, BrowserRouter, Routes, Route } from 'react-router'
 
 import Stock from './pages/stock/page'
-import Portfolio from './pages/portfolio/page'
+// import Portfolio from './pages/portfolio/page'
 import HomePage from './pages/auth/page'
 import TransactionPage from './pages/transactions/page'
 import Leaderboard from './pages/leaderboard/page'
@@ -23,7 +23,7 @@ const App = () => {
 			
 		}
 
-		const socket = new WebSocket(`ws://${SERVER_HOST}/news/`)
+		const socket = new WebSocket(`wss://${SERVER_HOST}/news/`)
 		socket.onmessage = (ev: MessageEvent) => showMessage(JSON.parse(ev.data).message)
 		socket.onclose = () => { if (socket.readyState === WebSocket.CLOSED) alert("Connection interrupted! Please refresh!") }
 		
@@ -32,7 +32,7 @@ const App = () => {
 
 	return (
 		<>
-			<div id="toast" className="py-3 px-5 absolute transition right-[25px] w-[300px] rounded z-[99999]"></div>
+			<div id="toast" className="text-white py-3 px-5 absolute transition right-[25px] w-[300px] rounded z-[99999]"></div>
 
 			<BrowserRouter>
 				<Navbar />
