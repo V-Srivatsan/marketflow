@@ -1,7 +1,7 @@
 @import "tailwindcss";
 html, body { 
     padding: 0; margin: 0; 
-    background: #020202;
+    background: rgb(6,7,255);
     color: white;
     overflow-x: hidden;
 }
