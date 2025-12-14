@@ -19,7 +19,7 @@ app.add_middleware(
         "http://localhost:3000",
         "http://127.0.0.1:3000",
         "https://stock-market-ecell.vercel.app",
-        "*.ngrok-free.app"
+        "https://7a078d860d1d.ngrok-free.app/"
     ],
     allow_credentials=True,
     allow_methods=["*"],
