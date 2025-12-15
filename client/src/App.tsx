@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useAuthStore, useUserStore } from './lib/store'
 import { makeRequest, SERVER_HOST, showMessage } from './lib/utils'
-import { NavLink, BrowserRouter, Routes, Route, useNavigate } from 'react-router'
+import { NavLink, BrowserRouter, Routes, Route } from 'react-router'
 
 import Stock from './pages/stock/page'
 // import Portfolio from './pages/portfolio/page'
@@ -12,13 +12,12 @@ import Leaderboard from './pages/leaderboard/page'
 
 const ProtectedRoute = ({ elem }: { elem: React.ReactNode }) => {
 	const logged = useAuthStore(state => state.logged)
-	const nav = useNavigate()
-
-	useEffect(() => { 
-		if (!logged) nav('/')
-	}, [logged, nav])
 	
-	return elem
+	return (logged ? elem :
+		<div className='text-white mt-[6rem] px-10'>
+			You are not logged in. Please <NavLink className="underline" to="/">login</NavLink> to continue.
+		</div>
+	)
 }
 
 
@@ -81,6 +80,12 @@ const Navbar = () => {
 					</>
 				}
 				<NavLink to="/leaderboard">Leaderboard</NavLink>
+				{!logged ? <></> :
+					<a href="#" onClick={() => {
+						localStorage.removeItem("token")
+						window.location.href = "/"
+					}}>Logout</a>
+				}
 			</div>
 		</nav>
 	)
