@@ -1,5 +1,4 @@
 import type { Stock, StockEntry } from "../../types";
-import { useUserStore } from "../../lib/store";
 
 type Props = {
   stocks: Record<string, Stock>;
@@ -8,7 +7,6 @@ type Props = {
 };
 
 const PortfolioSummary = ({ currentStockId, entries, stocks }: Props) => {
-  const ownedStocks = useUserStore((state) => state.stocks);
 
   return (
     <div className="p-5 rounded-2xl bg-gradient-to-br from-[#062733] to-[#041f2b] border border-[#1e6b6b]">
