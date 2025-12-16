@@ -4,7 +4,7 @@ from stock.models import *
 db.sql.SQLModel.metadata.create_all(db.engine)
 
 
-from fastapi import FastAPI, Depends, WebSocket, WebSocketDisconnect
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from user.views import router as user_routes
 from stock.views import router as stock_routes

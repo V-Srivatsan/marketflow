@@ -1,4 +1,4 @@
-export const SERVER_HOST = "sms-server-clz0.onrender.com"
+export const SERVER_HOST = "sms.helloecellvitc.workers.dev"
 // export const SERVER_HOST = "localhost:8000"
 
 export const makeRequest = async(
@@ -14,7 +14,7 @@ export const makeRequest = async(
         method: method,
         headers: {
             'Content-Type': 'application/json',
-            ...(includeAuth ? { 'Authorization': 'Bearer ' + token } : {})
+            ...(includeAuth ? { 'user-token': token } : {})
         },
         ...(data ? { body: JSON.stringify(data) } : {})
     })
