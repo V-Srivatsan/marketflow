@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useAuthStore, useUserStore } from './lib/store'
-import { makeRequest, SERVER_HOST, showMessage } from './lib/utils'
+import { makeRequest } from './lib/utils'
 import { NavLink, BrowserRouter, Routes, Route } from 'react-router'
 
 import Stock from './pages/stock/page'
@@ -34,11 +34,11 @@ const App = () => {
 			
 		}
 
-		const socket = new WebSocket(`wss://${SERVER_HOST}/news/`)
-		socket.onmessage = (ev: MessageEvent) => showMessage(JSON.parse(ev.data).message)
-		socket.onclose = () => { if (socket.readyState === WebSocket.CLOSED) alert("Connection interrupted! Please refresh!") }
+		// const socket = new WebSocket(`wss://${SERVER_HOST}/news/`)
+		// socket.onmessage = (ev: MessageEvent) => showMessage(JSON.parse(ev.data).message)
+		// socket.onclose = () => { if (socket.readyState === WebSocket.CLOSED) alert("Connection interrupted! Please refresh!") }
 		
-		return () => { if (socket.readyState === WebSocket.OPEN) socket.close() }
+		// return () => { if (socket.readyState === WebSocket.OPEN) socket.close() }
 	}, [login, profile])
 
 	return (
