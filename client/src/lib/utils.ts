@@ -1,5 +1,5 @@
-export const SERVER_HOST = "sms-server-wcc6.onrender.com"
-// export const SERVER_HOST = "localhost:8000"
+export const SERVER_HOST = import.meta.env.VITE_HOST || 'localhost:8000'
+export const PROD = import.meta.env.VITE_PROD === 'true'
 
 export const makeRequest = async(
     path: string,
@@ -10,7 +10,7 @@ export const makeRequest = async(
     const token = localStorage.getItem('token')
     if (includeAuth && !token) return { "detail": { "message": "You are not logged in" } };
 
-    const res = await fetch(`https://${SERVER_HOST}/${path}`, {
+    const res = await fetch(`${PROD ? 'https' : 'http'}://${SERVER_HOST}/${path}`, {
         method: method,
         headers: {
             'Content-Type': 'application/json',

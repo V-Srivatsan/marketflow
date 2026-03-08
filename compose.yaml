@@ -9,6 +9,8 @@ services:
     command: ["npm", "run", "dev"]
     environment:
       - WATCHPACK_POLLING=true
+      - VITE_HOST=localhost:8000
+      - VITE_PROD=false
   
   server:
     build: ./server
