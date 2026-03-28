@@ -1,0 +1,1056 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Marketflow",
+    "description": "",
+    "version": "1.0.0"
+  },
+  "tags": [],
+  "paths": {
+    "/stocks/": {
+      "post": {
+        "summary": "Start Stock",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "Cache-Control",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "no-cache",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Postman-Token",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "<calculated when request is sent>",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Length",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "0",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Host",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "<calculated when request is sent>",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "User-Agent",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "PostmanRuntime/7.39.1",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "*/*",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Encoding",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "gzip, deflate, br",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Connection",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "keep-alive",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "{{admin_header}}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              },
+              "examples": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      },
+      "delete": {
+        "summary": "Stop Stock",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "Cache-Control",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "no-cache",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Postman-Token",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "<calculated when request is sent>",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Host",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "<calculated when request is sent>",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "User-Agent",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "PostmanRuntime/7.39.1",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "*/*",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Encoding",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "gzip, deflate, br",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Connection",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "keep-alive",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "{{admin_header}}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      },
+      "get": {
+        "summary": "Get Stocks",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "Cache-Control",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "no-cache",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Postman-Token",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "<calculated when request is sent>",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Host",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "<calculated when request is sent>",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "User-Agent",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "PostmanRuntime/7.39.1",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "*/*",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Encoding",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "gzip, deflate, br",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Connection",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "keep-alive",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "{{auth_header}}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/user/login": {
+      "post": {
+        "summary": "Login",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "username",
+                  "password"
+                ]
+              },
+              "example": {
+                "username": "test",
+                "password": "test"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/stocks/transact/e63b3f75fc184d30beda991d79bf9fb3": {
+      "post": {
+        "summary": "Make Transaction",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "Cache-Control",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "no-cache",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Postman-Token",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "<calculated when request is sent>",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Length",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "<calculated when request is sent>",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Host",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "<calculated when request is sent>",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "User-Agent",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "PostmanRuntime/7.39.1",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "*/*",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Encoding",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "gzip, deflate, br",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Connection",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "keep-alive",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "{{auth_header}}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "units": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "units"
+                ]
+              },
+              "example": {
+                "units": -10
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/user/": {
+      "get": {
+        "summary": "Get Info",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "Cache-Control",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "no-cache",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Postman-Token",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "<calculated when request is sent>",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Host",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "<calculated when request is sent>",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "User-Agent",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "PostmanRuntime/7.39.1",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "*/*",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Encoding",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "gzip, deflate, br",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Connection",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "keep-alive",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "{{auth_header}}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/user/signup": {
+      "post": {
+        "summary": "Signup",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "username",
+                  "password"
+                ]
+              },
+              "example": {
+                "username": "vatsan",
+                "password": "test"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/user/verify/radhika": {
+      "put": {
+        "summary": "Verify User",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "Cache-Control",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "no-cache",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Postman-Token",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "<calculated when request is sent>",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Length",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "0",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Host",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "<calculated when request is sent>",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "User-Agent",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "PostmanRuntime/7.39.1",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "*/*",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Encoding",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "gzip, deflate, br",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Connection",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "keep-alive",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "{{admin_header}}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/user/transactions": {
+      "get": {
+        "summary": "Get Transactions",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "{{auth_header}}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/stocks/events/": {
+      "post": {
+        "summary": "Event Trigger",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "{{admin_header}}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "events": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "to": {
+                          "type": "integer"
+                        },
+                        "duration": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "events"
+                ]
+              },
+              "example": {
+                "events": [
+                  {
+                    "id": "ccfe367ba82145daa75daa9454efa331",
+                    "to": 500,
+                    "duration": 3
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/stocks/patterns/": {
+      "post": {
+        "summary": "Pattern Trigger",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "{{admin_header}}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "events": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "pattern": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "events"
+                ]
+              },
+              "example": {
+                "events": [
+                  {
+                    "id": "e63b3f75fc184d30beda991d79bf9fb3",
+                    "pattern": "bullish_pennant"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/news/": {
+      "post": {
+        "summary": "News",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "example": "{{admin_header}}",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "message": {
+                    "type": "string"
+                  },
+                  "random": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "message",
+                  "random"
+                ]
+              },
+              "example": {
+                "message": "Kaam karja",
+                "random": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    }
+  },
+  "components": {
+    "schemas": {},
+    "responses": {},
+    "securitySchemes": {}
+  },
+  "servers": [],
+  "security": []
+}
