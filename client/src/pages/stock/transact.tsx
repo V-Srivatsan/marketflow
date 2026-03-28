@@ -34,7 +34,7 @@ const Transact = ({ stockId, stockName, price }: Props) => {
     setLoading(true);
     try {
       const res = await makeRequest(
-        `stocks/transact/${stockId}`,
+        `transact/${stockId}`,
         "POST",
         { units: units * (isBuy ? 1 : -1) },
         true
@@ -47,7 +47,7 @@ const Transact = ({ stockId, stockName, price }: Props) => {
         userStore.update(res.balance, {
           ...userStore.stocks,
           [stockId]: {
-            quantity: (userStore.stocks[stockId].quantity || 0) + (isBuy ? units : -units),
+            quantity: (userStore.stocks[stockId]?.quantity ?? 0) + (isBuy ? units : -units),
             avg_price: res.avg_price
           }
         });

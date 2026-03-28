@@ -13,7 +13,7 @@ const Greet = () => {
       </h2>
 
       <p className="text-gray-400 mt-6 max-w-md">
-        Trade smarter, grow faster 🚀
+        Trade smarter, grow faster
       </p>
     </div>
   );

@@ -16,7 +16,7 @@ const TransactionPage = () => {
   useEffect(() => {
     const run = async () => {
       try {
-        const data = (await makeRequest('user/transactions', 'GET', undefined, true))["transactions"] as Transaction[]
+        const data = (await makeRequest('transact', 'GET', undefined, true))["transactions"] as Transaction[]
         setRows(data)
       } catch (e) {
         console.error(e)

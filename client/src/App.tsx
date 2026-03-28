@@ -67,10 +67,7 @@ const Navbar = () => {
 
 	return (
 		<nav className='flex justify-between px-10 md:px-24 items-center'>
-			<NavLink to="/">
-				<img src="/favicon/android-chrome-192x192.png" width={50} height={50} alt="" />
-			</NavLink>
-
+			<NavLink to="/" className="text-2xl font-bold text-green-400">Marketflow</NavLink>
 			<div className="inline-flex gap-5">
 				<NavLink to="/">Home</NavLink>
 				{!logged ? <></> :
