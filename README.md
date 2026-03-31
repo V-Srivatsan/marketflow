@@ -81,7 +81,8 @@ This decoupling keeps the API layer clean and scalable while centralizing simula
   - Once in the server instance, initialize the database
     ```
     python3
-    >>> from data.init_test import *
-    >>> create_test_data()
+    >>> from lib.test import *
+    >>> import asyncio
+    >>> asyncio.run(create_test_stocks())
     ```
 * That's it! Open `http://localhost:3000` to view the site
