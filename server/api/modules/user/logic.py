@@ -1,7 +1,9 @@
-import jwt, os
+import jwt, os, json
 from fastapi import HTTPException
 from tortoise.exceptions import IntegrityError
+
 from . import models, forms
+from modules.stock import models as stock_models
 from modules.transaction import models as transaction_models
 
 async def login(data: forms.UserForm):
@@ -45,3 +47,15 @@ async def get_info(user_id: str):
             }) for holding in holdings
         ])
     }
+
+
+async def get_portfolio(user_id: str, user_model: models.User | None = None):
+    user = await models.User.get(uid=user_id) if user_model is None else user_model
+
+    holdings = await transaction_models.Holding.filter(user=user).all().prefetch_related('stock')
+
+    res = user.balance
+    for holding in holdings:
+        entry = await stock_models.StockEntry.filter(stock=holding.stock).order_by('-timestamp')
+        res += (holding.quantity * entry[0].close)
+    return (res, user.balance)

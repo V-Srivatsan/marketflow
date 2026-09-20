@@ -2,6 +2,7 @@ from fastapi import HTTPException, status
 
 from . import models
 from modules.user import models as user_models
+from modules.user.logic import get_portfolio
 from modules.stock import models as stock_models
 from lib.cache import Cache
 
@@ -131,11 +132,18 @@ async def get_transactions(user_id: str):
 
     transactions = await models.Transaction.filter(user=user)\
         .order_by('-timestamp').all().prefetch_related('stock')
+
+    portfolio, balance = await get_portfolio(user_id, user)
     return {
         "transactions": [{
             "stock": transaction.stock.name,
             "units": transaction.num_units,
             "price": transaction.price,
             "timestamp": transaction.timestamp
-        } for transaction in transactions]
+        } for transaction in transactions],
+        "user": {
+            "portfolio": portfolio,
+            "balance": balance,
+            "pnl": portfolio - 100000
+        }
     }

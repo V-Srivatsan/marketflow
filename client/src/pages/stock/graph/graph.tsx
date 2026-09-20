@@ -1,7 +1,3 @@
-
-
-
-
 // @ts-nocheck
 import { useState, useEffect, useRef } from "react";
 import {
@@ -25,7 +21,7 @@ import SubIndicatorPanel from "./SubIndicatorPanel";
 import {
   ON_CHART_INDICATORS,
   BELOW_CHART_INDICATORS,
-} from "../../indicatorTypes";
+} from "./indicatorTypes";
 
 type StockEntry = {
   time: UTCTimestamp;
@@ -40,13 +36,6 @@ type GraphProps = {
   data: StockEntry[];
   curr: string;
   indicatorData: { name: string; values: number[] } | null;
-};
-
-const INDICATOR_STYLE = {
-  lineWidth: 2,
-  color: "#ffd54f",
-  priceLineVisible: false,
-  lastValueVisible: false,
 };
 
 const Graph = ({ data, indicatorData }: GraphProps) => {
@@ -181,24 +170,17 @@ const Graph = ({ data, indicatorData }: GraphProps) => {
 
   return (
     <div className="relative">
-      <div className="absolute top-4 left-4 z-50 flex gap-3 items-center bg-[#0b123a]/80 backdrop-blur-md px-4 py-2 rounded-xl border border-[#1e2a6b]">
-        <div className="flex overflow-hidden rounded-lg border border-[#1e2a6b]">
+
+      <div className="absolute top-4 left-4 z-50 flex gap-3 items-center bg-background/80 backdrop-blur-md px-4 py-2 rounded-xl border border-border">
+        <div className="flex overflow-hidden rounded-md border border-border">
           <button
             onClick={() => setShowCandle(true)}
-            className={`px-4 py-1 text-sm ${
-              showCandle ? "bg-green-400 text-black" : "text-gray-300"
-            }`}
-          >
-            Candlestick
-          </button>
+            className={"px-3 py-1 font-medium " + (showCandle ? "bg-primary text-white" : "text-secondary-foreground hover:text-foreground")}
+          >Candles</button>
           <button
             onClick={() => setShowCandle(false)}
-            className={`px-4 py-1 text-sm ${
-              !showCandle ? "bg-green-400 text-black" : "text-gray-300"
-            }`}
-          >
-            Line
-          </button>
+            className={"px-3 py-1 text-white font-medium " + (!showCandle ? "bg-primary text-white" : "text-secondary-foreground hover:text-foreground")}
+          >Line</button>
         </div>
 
         <IndicatorsDropdown onSelect={setSelectedIndicator} />
@@ -231,7 +213,7 @@ const Graph = ({ data, indicatorData }: GraphProps) => {
 
 const CHART_MAIN: DeepPartial<ChartOptions> = {
   autoSize: true,
-  layout: { background: { color: "#070d2d" }, textColor: "#e5e7eb" },
+  layout: { background: { color: "transparent" }, textColor: "#e5e7eb" },
   grid: {
     vertLines: { color: "rgba(255,255,255,0.08)" },
     horzLines: { color: "rgba(255,255,255,0.08)" },
@@ -241,20 +223,27 @@ const CHART_MAIN: DeepPartial<ChartOptions> = {
 };
 
 const CANDLE_STYLE: DeepPartial<CandlestickSeriesOptions> = {
-  upColor: "#22c55e",
+  upColor: "#22C55E",
   downColor: "#ef4444",
-  wickUpColor: "#22c55e",
+  wickUpColor: "#22C55E",
   wickDownColor: "#ef4444",
   borderVisible: false,
 };
 
 const PRICE_STYLE: DeepPartial<AreaSeriesOptions> = {
-  lineColor: "#22c55e",
-  topColor: "transparent",
+  lineColor: "#22C55E",
+  topColor: "#22C55E",
   bottomColor: "transparent",
   lineWidth: 2,
   lastValueVisible: false,
   priceLineVisible: false,
+};
+
+const INDICATOR_STYLE = {
+  lineWidth: 2,
+  color: "#7C5CFF",
+  priceLineVisible: false,
+  lastValueVisible: false,
 };
 
 export default Graph;

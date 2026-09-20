@@ -5,8 +5,8 @@ import asyncio
 import middleware
 
 from . import consumer, forms
-from modules.transaction import models as transaction_models
-from modules.stock import models as stock_models
+from modules.user.models import User
+from modules.user.logic import get_portfolio
 
 def news_broadcast(msg):
     print(msg, flush=True)
@@ -37,23 +37,9 @@ router.add_websocket_route('/news/', consumer.NewsConsumer.as_asgi())
 @router.get('/leaderboard')
 async def get_leaderboard():
     res = {}
-    holdings = await transaction_models.Holding.filter(user__verified=True).all().prefetch_related('user', 'stock')
 
-    stocks = set([holding.stock.uid.hex for holding in holdings])
-    prices = dict([
-        (entry.uid.hex, entry.close)
-        for entry in 
-        (await stock_models.StockEntry.all().order_by("-timestamp")\
-         .limit(len(stocks)).prefetch_related("stock"))
-    ])
-
-    for holding in holdings:
-        user = holding.user
-        res[user.username] = user.balance
-
-    for holding in holdings:
-        user = holding.user
-        res[user.username] += holding.quantity * prices.get(holding.stock.uid.hex, 0)
+    users = await User.filter(verified=True).all()
+    for user in users:
+        res[user.username] = (await get_portfolio(user.uid.hex))[0]
 
     return res
-

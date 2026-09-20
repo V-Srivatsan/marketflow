@@ -1,8 +1,11 @@
 import { useState, useEffect, useRef } from "react";
-import type { Stock as StockType, StockEntry } from "../../types";
-import { parse_entry } from "./logic";
+import type { Stock as StockType, StockEntry } from "../../lib/types";
+import { parse_entry } from "./graph/logic";
 import { makeRequest, SERVER_HOST, PROD } from "../../lib/utils";
+
 import Stock from "./stock";
+import StockPanel from "./stock_panel";
+import Transact from "./transact";
 
 const Page = () => {
   const [stocks, setStocks] = useState<Record<string, StockType> | null>(null);
@@ -50,14 +53,11 @@ const Page = () => {
   if (!stocks || !entries) return null;
 
   return (
-    <div className="min-h-screen text-white">
-      <Stock
-        stocks={stocks}
-        entries={entries}
-        curr={curr}
-        setCurr={setCurr}
-      />
-    </div>
+    <main className="flex overflow-hidden">
+      <StockPanel stocks={stocks} entries={entries} curr={curr} setCurr={setCurr} />
+      <Stock stocks={stocks} entries={entries} curr={curr} />
+      <Transact stockId={curr} price={entries[curr].at(-1)!.close} stockName={stocks[curr].name} />
+    </main>
   );
 };
 

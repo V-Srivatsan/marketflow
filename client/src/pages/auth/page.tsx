@@ -1,31 +1,36 @@
 import { useState } from "react";
-import Greet from "./greet";
-import Login from "./login";
-import Signup from "./signup";
+import AuthForm from "./form";
 
 const AuthPage = () => {
-  const [isSignup, setIsSignup] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
 
   return (
-    <div className="w-full relative overflow-hidden">
+    <main className="flex flex-col items-center justify-center bg-background p-4 relative overflow-hidden">
       
-      {/* Stars */}
-      <div className="absolute inset-0 bg-[radial-gradient(white_1px,transparent_1px)] [background-size:40px_40px] opacity-10" />
-
-      <div className="relative z-10 grid grid-cols-2 min-h-[calc(100vh-5rem)]">
-        {/* Left */}
-        <Greet />
-
-        {/* Right */}
-        <div className="flex items-center justify-center">
-          {isSignup ? (
-            <Signup onSwitch={() => setIsSignup(false)} />
-          ) : (
-            <Login onSwitch={() => setIsSignup(true)} />
-          )}
-        </div>
+      <div className="h-full text-center px-20 py-5">
+        <h1 className="text-white text-5xl font-semibold leading-tight">Master the Markets</h1>
+        <h2 className="text-secondary-foreground text-4xl font-semibold">Compete for Glory</h2>
       </div>
-    </div>
+
+      <div className="w-full max-w-[440px] bg-card border border-border rounded-xl p-6 z-10 shadow-2xl">
+        <div className="flex bg-background rounded-full p-1 mb-6 border border-border">
+          <button 
+            className={`flex-1 py-2 text-sm font-medium rounded-full transition-colors ${isLogin ? 'bg-primary text-white' : 'text-secondary-foreground hover:text-foreground'}`}
+            onClick={() => setIsLogin(true)}
+          >
+            Log in
+          </button>
+          <button 
+            className={`flex-1 py-2 text-sm font-medium rounded-full transition-colors ${!isLogin ? 'bg-primary text-white' : 'text-secondary-foreground hover:text-foreground'}`}
+            onClick={() => setIsLogin(false)}
+          >
+            Sign up
+          </button>
+        </div>
+
+        <AuthForm isLogin={isLogin} />
+      </div>
+    </main>
   );
 };
 

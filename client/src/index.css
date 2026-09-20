@@ -1,10 +1,84 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --color-background: #0B0D12;
+  --color-foreground: #F2F4F8;
+  --color-card: #12151C;
+  --color-card-foreground: #F2F4F8;
+  --color-popover: #181C25;
+  --color-popover-foreground: #F2F4F8;
+  --color-primary: #BA760F;
+  --color-primary-hover: #DE911D;
+  --color-primary-foreground: #F2F4F8;
+  --color-secondary: #232836;
+  --color-secondary-foreground: #9AA3B5;
+  --color-muted: #12151C;
+  --color-muted-foreground: #5F6778;
+  --color-accent: rgba(124, 92, 255, 0.14);
+  --color-accent-foreground: #7C5CFF;
+  --color-destructive: #EF4444;
+  --color-destructive-foreground: #F2F4F8;
+  --color-success: #22C55E;
+  --color-success-foreground: #F2F4F8;
+  --color-border: #232836;
+  --color-input: #232836;
+  --color-ring: #7C5CFF;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+}
+
+@layer base {
+  :root {
+    --background: #0B0D12;
+    --foreground: #F2F4F8;
+    --card: #12151C;
+    --card-foreground: #F2F4F8;
+    --popover: #181C25;
+    --popover-foreground: #F2F4F8;
+    --primary: #7C5CFF;
+    --primary-foreground: #F2F4F8;
+    --secondary: #232836;
+    --secondary-foreground: #9AA3B5;
+    --muted: #12151C;
+    --muted-foreground: #5F6778;
+    --accent: rgba(124, 92, 255, 0.14);
+    --accent-foreground: #7C5CFF;
+    --destructive: #EF4444;
+    --destructive-foreground: #F2F4F8;
+    --success: #22C55E;
+    --success-foreground: #F2F4F8;
+    --border: #232836;
+    --input: #232836;
+    --ring: #7C5CFF;
+    --radius: 12px;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  .tabular-nums {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
 /* Global styles */
 html, body { 
     padding: 0;
     margin: 0;
-    background: linear-gradient(to bottom, #050617, oklch(21% 0.034 264.665), #050617);
     overflow-x: hidden;
 }
 
@@ -21,43 +95,16 @@ html, body {
     transform: translateX(0);
 }
 
-nav {
-    inset: 0 0 auto 0;
-    position: fixed;
-    background: black;
-    height: 5rem;
-    z-index: 999;
-}
-
-nav a {
-    color: #ddd;
-    transition: color 0.2s ease-in-out;
-}
-
-nav a:hover {
-    color: white
-}
-
 main {
     margin-top: 5rem;
+    min-height: calc(100vh - 5rem);
 }
 
 button {
-    cursor: pointer;
-    padding: 0.25rem 1rem;
-    border-radius: 10px;
-    border: 2px solid #2962FF;
-    transition: background-color 0.2s ease-in-out, backdrop-filter 0.2s ease-in-out;
-}
-
-button:hover {
-    background-color: rgba(41, 98, 255, 0.28);
-    backdrop-filter: blur(10px);
+  cursor: pointer;
 }
 
 button:disabled {
-    opacity: 0.5;
-    cursor: default;
-    pointer-events: none;
+  pointer-events: none;
+  opacity: 60%;
 }
-

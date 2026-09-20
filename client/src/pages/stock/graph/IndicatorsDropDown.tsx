@@ -61,11 +61,11 @@ const IndicatorsDropdown = ({ onSelect }: Props) => {
 
   return (
     <div ref={dropdownRef} className="relative w-56">
+
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full bg-[#070d2d] border border-[#1e2a6b] rounded-lg px-3 py-2 text-sm text-gray-200"
-      >
-        {selected ? indicators[selected] : "Select Indicator"}
+        className="w-full text-center px-3 py-1 border border-border rounded-md flex items-center gap-2 hover:bg-card">
+        {selected ? indicators[selected] : "Indicators"}
       </button>
 
       {isOpen && (

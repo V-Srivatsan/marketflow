@@ -1,4 +1,4 @@
-import type { Stock, StockEntry, StocksResponse } from "../../types"
+import type { Stock, StockEntry, StocksResponse } from "../../../lib/types"
 
 export const parse_entry = (stocks: StocksResponse) => {
     const info: Record<string, Stock> = {}
