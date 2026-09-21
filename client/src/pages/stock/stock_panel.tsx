@@ -13,7 +13,7 @@ const StockPanel = ({ curr, setCurr, stocks, entries }: StockPanelProps) => {
     const [search, setSearch] = useState("")
 
     return (
-        <section className="w-[300px] border-r border-border flex flex-col shrink-0 bg-background relative z-10">
+        <section className="col-span-2 border-r border-border shrink-0 bg-background relative z-10">
             <div className="p-4 border-b border-border">
                 <div className="relative">
                     <input

@@ -53,7 +53,7 @@ const Page = () => {
   if (!stocks || !entries) return null;
 
   return (
-    <main className="flex overflow-hidden">
+    <main className="grid grid-cols-12 overflow-hidden">
       <StockPanel stocks={stocks} entries={entries} curr={curr} setCurr={setCurr} />
       <Stock stocks={stocks} entries={entries} curr={curr} />
       <Transact stockId={curr} price={entries[curr].at(-1)!.close} stockName={stocks[curr].name} />

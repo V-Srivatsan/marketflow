@@ -21,7 +21,7 @@ const Stock = ({ stocks, entries, curr }: StockProps) => {
   const candlePct = prevClose ? (candleChange / prevClose) * 100 : 0;
 
   return (
-    <section className="flex-1 flex flex-col min-w-0 bg-card/50 relative z-0">
+    <section className="col-span-7 min-w-0 bg-card/50 relative z-0">
 
       <div className="p-6 border-b border-border relative">
         <div className="flex items-end justify-between">

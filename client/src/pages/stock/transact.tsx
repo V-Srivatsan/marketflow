@@ -56,8 +56,8 @@ const Transact = ({ stockId, stockName, price }: Props) => {
   };
 
   return (
-    <div className="flex shrink-0 border-l border-border bg-background relative z-10 shadow-[-10px_0_30px_-15px_rgba(0,0,0,0.3)]">
-      <div className="w-[340px] flex flex-col border-r border-border bg-card/30">
+    <section className="col-span-3 shrink-0 border-l border-border bg-background relative z-10 shadow-[-10px_0_30px_-15px_rgba(0,0,0,0.3)]">
+      <div className="w-full flex flex-col border-r border-border bg-card/30">
         <div className="p-6 flex-1">
           <h3 className="font-semibold text-lg mb-6 flex items-center justify-between">
             Trade {stockName}
@@ -122,7 +122,7 @@ const Transact = ({ stockId, stockName, price }: Props) => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
