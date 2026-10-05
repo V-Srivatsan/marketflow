@@ -7,7 +7,7 @@ services:
     ports:
       - 3000:3000
     working_dir: /app
-    command: ["/bin/sh", "-c", "npm i && npm run dev"]
+    command: ["/bin/sh", "-c", "npm i && exec npm run dev"]
     environment:
       - WATCHPACK_POLLING=true
       - VITE_HOST=localhost:8000
@@ -21,15 +21,16 @@ services:
     ports:
       - 8000:8000
     environment:
-      - ADMIN_USERNAME=ecell_admin
-      - ADMIN_PASSWORD=ecell_admin
+      - ADMIN_USERNAME=admin
+      - ADMIN_PASSWORD=admin
       - SECRET=insecure_key
       - DB_URL=postgres://marketflow:password@db/marketflow
       - CACHE_HOST=cache
       - CACHE_PORT=6379
       - ENGINE_HOST=http://engine:8000
+      - MIRA_HOST=http://mira:8000
       - TORTOISE_ORM=lib.db.TORTOISE_ORM
-    command: ["/bin/sh", "-c", "pip install -r requirements.txt && fastapi dev main.py --host 0.0.0.0"]
+    command: ["/bin/sh", "-c", "pip install -r requirements.txt && exec fastapi dev main.py --host 0.0.0.0"]
   
   engine:
     image: python:3.12-alpine
@@ -40,11 +41,17 @@ services:
       - DB_URL=postgres://marketflow:password@db/marketflow
       - CACHE_HOST=cache
       - CACHE_PORT=6379
-    command: ["/bin/sh", "-c", "pip install -r requirements.txt && fastapi dev main.py --host 0.0.0.0"]
+    command: ["/bin/sh", "-c", "pip install -r requirements.txt && exec fastapi dev main.py --host 0.0.0.0"]
 
   cache:
     image: "redis:alpine"
 
+  mira:
+    image: "pytorch/pytorch:latest"
+    volumes:
+      - ./server/mira:/app
+    working_dir: /app
+    command: ["/bin/sh", "-c", "pip install -r requirements.txt && exec fastapi dev main.py --host 0.0.0.0"]
   db:
     image: "postgres:18-alpine"
     environment:
