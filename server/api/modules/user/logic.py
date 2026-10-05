@@ -24,15 +24,6 @@ async def signup(data: forms.UserForm):
         raise HTTPException(400, detail={"message": "Username already taken!"})
 
     
-async def verify_user(username: str):
-    user = await models.User.get_or_none(username=username)
-    if not user: raise HTTPException(404, detail={"message": "User not found!"})
-
-    user.verified = True
-    await user.save()
-    return {"message": "User verified successfully."}
-
-
 async def get_info(user_id: str):
     user = await models.User.get_or_none(uid=user_id)
     if not user: raise HTTPException(404, detail={"message": "User not found!"})

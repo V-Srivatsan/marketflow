@@ -9,7 +9,7 @@ import Stock from './pages/stock/page'
 import HomePage from './pages/auth/page'
 import TransactionPage from './pages/transactions/page'
 import Leaderboard from './pages/leaderboard/page'
-
+import AdminPage from './pages/admin/page'
 
 const ProtectedRoute = ({ elem }: { elem: React.ReactNode }) => {
 	const logged = useAuthStore(state => state.logged)
@@ -51,10 +51,10 @@ const App = () => {
 
 				<Routes>
 					<Route path="/stocks" element={<ProtectedRoute elem={<Stock />} />} />
-					{/* <Route path="/portfolio" element={<Portfolio />} /> */}
 					<Route path="/transactions" element={<ProtectedRoute elem={<TransactionPage />} />} />
 					<Route path="/leaderboard" element={<Leaderboard />} />
 					<Route path="/" element={<HomePage />} />
+					<Route path="/admin" element={<AdminPage />} />
 				</Routes>
 			</BrowserRouter>
 		</>

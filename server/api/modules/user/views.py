@@ -12,10 +12,6 @@ async def login(data: forms.UserForm):
 async def signup(data: forms.UserForm):
     return await logic.signup(data)
 
-@router.put('/verify/{username}')
-async def verify_user(username: str, _: None = Depends(middleware.check_admin)):
-    return await logic.verify_user(username)
-
 @router.get('/')
 async def get_info(user: str = Depends(middleware.get_user)):
     return await logic.get_info(user)

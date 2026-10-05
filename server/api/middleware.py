@@ -1,6 +1,9 @@
 from fastapi import Header, HTTPException, status
 import jwt, os
 
+def sign_jwt(data: dict):
+    return jwt.encode(data, os.environ["SECRET"], algorithm="HS256")
+
 def get_user(authorization: str | None = Header(default=None)):
     if not authorization:
         raise HTTPException(status.HTTP_401_UNAUTHORIZED, detail={"message": "Unauthorized access"})

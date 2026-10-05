@@ -1,10 +1,9 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 from lib.cache import Cache
 from lib.pubsub import PubSub
 import asyncio
-import middleware
 
-from . import consumer, forms
+from . import consumer
 from modules.user.models import User
 from modules.user.logic import get_portfolio
 
@@ -24,11 +23,6 @@ router = APIRouter()
 CACHE = Cache()
 NEWS_UPDATES = PubSub(CACHE, "news_update")
 NEWS_UPDATES.subscribe(news_broadcast)
-
-@router.post('/news')
-async def post_news(data: forms.NewsForm, _: None = Depends(middleware.check_admin)):
-    NEWS_UPDATES.publish(data.message)
-    return { "message": "News update sent successfully" }
 
 router.add_websocket_route('/news/', consumer.NewsConsumer.as_asgi())
 

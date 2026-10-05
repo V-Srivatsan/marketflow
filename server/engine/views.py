@@ -12,6 +12,11 @@ CACHE = Cache()
 PUBSUB = PubSub(CACHE, "market_update")
 PROVIDER: StockProvider | None = None
 
+@router.get("/")
+async def get_provider():
+    global PROVIDER
+    return { "active": PROVIDER is not None and PROVIDER.is_alive() }
+
 @router.post("/")
 async def start_provider():
     global PROVIDER

@@ -14,6 +14,8 @@ from tortoise.contrib.fastapi import register_tortoise
 from lib.db import TORTOISE_ORM
 register_tortoise(app, config=TORTOISE_ORM, generate_schemas=False)
 
+from modules.admin.views import router as admin_router
+app.include_router(admin_router, prefix='/admin')
 
 from modules.user.views import router as user_router
 app.include_router(user_router, prefix='/user')

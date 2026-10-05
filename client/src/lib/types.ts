@@ -1,9 +1,6 @@
 import type { UTCTimestamp } from "lightweight-charts"
 
-export type Stock = {
-    name: string,
-    category: string,
-}
+export type Stock = { name: string }
 
 export type StockEntry = {
     time: UTCTimestamp, 
