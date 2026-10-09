@@ -18,8 +18,8 @@ const Influence = () => {
             const st: Record<string, { name: string, entries: StockEntry[] }> = {}
             Object.entries(data).forEach(([key, value]) => (
                 st[key] = {
-                    name: value.name,
-                    entries: value.entries
+                    name: (value as { name: string, entries: StockEntry[] }).name,
+                    entries: (value as { name: string, entries: StockEntry[] }).entries
                 }
             ))
 

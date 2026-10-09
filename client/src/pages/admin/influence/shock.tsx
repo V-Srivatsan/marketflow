@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { TrendingUp, TrendingDown, Undo2 } from "lucide-react"
+import { TrendingUp, TrendingDown } from "lucide-react"
 
 import type { StockEntry } from "../../../lib/types"
 import { makeRequest, showMessage } from "../../../lib/utils"
