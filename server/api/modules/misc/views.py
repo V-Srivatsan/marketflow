@@ -14,7 +14,7 @@ def news_broadcast(msg):
         "news", 
         {
             "type": "news.update",
-            "data": { "message": msg['data'].decode('utf-8') }
+            "data": { "message": msg['data'] }
         }
     ))
     loop.close()

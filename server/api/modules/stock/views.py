@@ -12,7 +12,7 @@ def market_broadcast(msg):
         "stocks", 
         {
             "type": "market.update",
-            "data": json.loads(msg['data'].decode('utf-8'))
+            "data": json.loads(msg['data'])
         }
     ))
     loop.close()
