@@ -61,7 +61,7 @@ const Transact = ({ stockId, stockName, price }: Props) => {
 
   useEffect(() => {
     tickCount.current = (tickCount.current+1)%miraPassion
-    if (tickCount.current === 0)
+    if (miraActive && tickCount.current === 0)
       makeRequest(`stock/mira/${stockId}`, 'GET', undefined, true)
         .then((data) => {
           if (data.units === 0) return;
