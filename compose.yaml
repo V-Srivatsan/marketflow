@@ -27,6 +27,8 @@ services:
       - DB_URL=postgres://marketflow:password@db/marketflow
       - CACHE_HOST=cache
       - CACHE_PORT=6379
+      - CACHE_SSL=false
+      - CACHE_SSL_CERT=None
       - ENGINE_HOST=http://engine:8000
       - MIRA_HOST=http://mira:8000
       - TORTOISE_ORM=lib.db.TORTOISE_ORM
@@ -41,6 +43,8 @@ services:
       - DB_URL=postgres://marketflow:password@db/marketflow
       - CACHE_HOST=cache
       - CACHE_PORT=6379
+      - CACHE_SSL=false
+      - CACHE_SSL_CERT=None
     command: ["/bin/sh", "-c", "pip install -r requirements.txt && exec fastapi dev main.py --host 0.0.0.0"]
 
   cache:
