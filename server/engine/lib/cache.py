@@ -8,7 +8,7 @@ class Cache:
         self.__cache = redis.Redis(
             host=os.environ['CACHE_HOST'], 
             port=int(os.environ['CACHE_PORT']),
-            ssl=bool(os.environ['CACHE_SSL']),
+            ssl=os.environ.get('CACHE_SSL', 'False').lower() == 'true',
             ssl_cert_reqs=None if os.environ.get('CACHE_SSL_CERT', 'None') == 'None' else os.environ['CACHE_SSL_CERT'],
             decode_responses=True,
         )

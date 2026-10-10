@@ -3,8 +3,10 @@ from fast_channels.layers import register_channel_layer
 from fast_channels.layers.redis import RedisChannelLayer
 import os
 
+PROTOCOL = "rediss" if os.environ.get('CACHE_SSL', 'False').lower() == 'true' else "redis"
+
 market_layer = RedisChannelLayer(hosts=[
-    f'redis://{os.environ["CACHE_HOST"]}:{os.environ["CACHE_PORT"]}'
+    f'{PROTOCOL}://{os.environ["CACHE_HOST"]}:{os.environ["CACHE_PORT"]}'
 ])
 register_channel_layer('market', market_layer)
 
