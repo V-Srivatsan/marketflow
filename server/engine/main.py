@@ -5,6 +5,9 @@ from tortoise.contrib.fastapi import register_tortoise
 from lib.db import TORTOISE_ORM
 register_tortoise(app, config=TORTOISE_ORM, generate_schemas=False)
 
+@app.get('/health')
+async def health_check():
+    return {"status": "ok"}
 
 from views import router
 app.include_router(router)

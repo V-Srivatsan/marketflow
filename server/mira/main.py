@@ -15,6 +15,10 @@ agent.eval()
 
 app = FastAPI()
 
+@app.get('/health')
+async def health_check():
+    return {"status": "ok"}
+
 class PredictForm(BaseModel):
     price: float
     cash: float

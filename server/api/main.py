@@ -10,6 +10,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.get('/health')
+async def health_check():
+    return {"status": "ok"}
+
 from tortoise.contrib.fastapi import register_tortoise
 from lib.db import TORTOISE_ORM
 register_tortoise(app, config=TORTOISE_ORM, generate_schemas=False)
